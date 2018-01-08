@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find xbot_lidar)/launch/lidar_modified.launch"/>
+  <include file="$(find xbot_post_process_map)/launch/post_process_map.launch"/>
+</launch>

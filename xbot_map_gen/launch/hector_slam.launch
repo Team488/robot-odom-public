@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="robot_odom_map_file_path" default="$(find xbot_map_gen)/maps"/>
+
+  <param name="/use_sim_time" value="false"/>
+
+  <node pkg="rviz" type="rviz" name="rviz"
+    args="-d $(find xbot_map_gen)/rviz_cfg/hector_mapping.rviz"/>
+
+  <include file="$(find xbot_map_gen)/launch/mapping_default.launch"/>
+
+  <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
+    <arg name="trajectory_source_frame_name" value="scanmatcher_frame"/>
+    <arg name="map_file_path" value="$(arg robot_odom_map_file_path)"/>
+  </include>
+
+</launch>
